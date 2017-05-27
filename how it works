@@ -1,0 +1,36 @@
+For Ubuntu 14.04 and above
+~/Documents$
+
+$ cat > raw_list
+	sudo apt-get -y install
+<Ctrl+D>
+
+$ apt list --installed >> raw_list
+
+$ grep -v "Listing..." raw_list  > list_1
+
+$ cut -f 1 -d '/' list_1 > hoz_list
+
+$ paste -sd " " hoz_list > fin_list
+
+$ rm raw_list list_1 hoz_list
+
+$ cat fin_list | less
+
+<Q>
+
+Other Versions
+
+$ dpkg --get-selections | grep -v deinstall
+(The -v tag "inverts" grep to return non-matching lines)
+
+To get a list of a specific package installed:
+
+dpkg --get-selections | grep postgres
+To save that list to a text file called packages on your desktop do this in your terminal:
+
+dpkg --get-selections | grep -v deinstall > ~/Desktop/packages
+Alternatively, simply use
+
+dpkg -l
+(you don't need to run any of theses commands as the superuser, so no sudo necessary)
