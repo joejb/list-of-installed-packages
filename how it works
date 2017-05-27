@@ -19,18 +19,3 @@ $ cat fin_list | less
 
 <Q>
 
-Other Versions
-
-$ dpkg --get-selections | grep -v deinstall
-(The -v tag "inverts" grep to return non-matching lines)
-
-To get a list of a specific package installed:
-
-dpkg --get-selections | grep postgres
-To save that list to a text file called packages on your desktop do this in your terminal:
-
-dpkg --get-selections | grep -v deinstall > ~/Desktop/packages
-Alternatively, simply use
-
-dpkg -l
-(you don't need to run any of theses commands as the superuser, so no sudo necessary)
